@@ -1,0 +1,37 @@
+nav {
+    background-color: #333;
+    overflow: hidden;
+  }
+  
+  .left {
+    float: left;
+  }
+  
+  .right {
+    float: right;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 28px 35px;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    background-color: #555;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .left, .right {
+      float: none;
+      text-align: center;
+    }
+    .right {
+      width: 100%;
+    }
+  }
+  
