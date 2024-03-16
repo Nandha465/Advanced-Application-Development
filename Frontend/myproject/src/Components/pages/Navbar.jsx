@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css'; // Import your CSS file for styling
 
@@ -6,7 +6,7 @@ function Navbar() {
   return (
     <nav>
       <div className="left">
-        <a href="#home">Home</a>
+        <a>Happy Events</a>
       </div>
       <div className="right">
         <Link to="/admin">Admin</Link>

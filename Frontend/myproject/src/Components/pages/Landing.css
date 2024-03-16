@@ -1,0 +1,43 @@
+.video-section {
+    position: relative;
+  }
+  
+  #video {
+    width: 100%;
+    height: auto;
+  }
+  
+  .text-overlay {
+    position: absolute;
+    top: 40%; /* Adjust the vertical position */
+    left: 50%; /* Adjust the horizontal position */
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+  }
+  
+  .text-overlay h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+  
+  .text-overlay h3 {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+  }
+  
+  .text-overlay .btn {
+    display: inline-block;
+    background-color: #fff;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .text-overlay .btn:hover {
+    background-color: #e31b4d;
+  }
+  

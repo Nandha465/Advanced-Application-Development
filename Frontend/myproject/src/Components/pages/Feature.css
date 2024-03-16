@@ -1,0 +1,42 @@
+.four-icons-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    background-color:rgb(241, 241, 230)
+  }
+  
+  .ico {
+    width: 100px; /* Adjust size as needed */
+    height: 100px; /* Adjust size as needed */
+    margin-bottom: 10px;
+    color: #e31b4d;
+  }
+  
+  h5 {
+    color: #f52020;
+    cursor: pointer;
+  }
+  h4{
+    color: black;
+  }
+  .icon {
+    text-align: center;
+    width: 100%; /* Set width to 100% for responsiveness */
+    max-width: 250px; /* Set maximum width */
+    padding: 20px; /* Add padding for spacing */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
+  @media (max-width: 768px) {
+    .four-icons-section {
+      flex-wrap: wrap; /* Allow icons to wrap on smaller screens */
+      padding: 10px; /* Adjust padding for smaller screens */
+    }
+  
+    .icon {
+      width: 45%; /* Adjust width for smaller screens */
+      margin: 5px; /* Add margin for spacing */
+    }
+  }
+  

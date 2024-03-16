@@ -6,14 +6,12 @@ import Register from './Components/pages/Register';
 import AdminPage from './Components/pages/AdminPage';
 
 function App() {
-  // const [count, setCount] = useState(0)
 
   return (
     <>
       
       <div>
       <Router>
-      
       <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/login' element={<Login/>}/>
