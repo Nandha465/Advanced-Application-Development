@@ -1,6 +1,7 @@
 import React from 'react';
 import './Landing.css';
 import vid from './vid.mp4';
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 function Landing() {
   return (
@@ -12,9 +13,10 @@ function Landing() {
         <div className="text-overlay">
           <h1>ENJOY YOUR DAY WITH US!</h1>
           <h3>MAKE THE MOMENT FREEZE</h3>
-          <a href="#" className="btn">
+          <AnchorLink href="#ser" className="btnn">
             Our Services
-          </a>
+          </AnchorLink>
+          
         </div>
       </section>
     

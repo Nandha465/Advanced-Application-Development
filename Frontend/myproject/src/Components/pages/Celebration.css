@@ -1,0 +1,34 @@
+.celebrate-section {
+    background-image: url('kids_cele.jpg');
+    background-color: rgba(0, 0, 0, 0.3); 
+    background-blend-mode: overlay; 
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    padding: 200px; 
+  }
+  
+  .content {
+    text-align: center;
+  }
+  .content h5{
+    color: rgb(255, 255, 255);
+  }
+  
+  .button {
+    background-color: #e31b4d; /* Button background color */
+    color: #ffffff; /* Button text color */
+    padding: 10px 20px; /* Adjust as needed */
+    font-size: 16px;
+    border: none;
+    border-radius: 28px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #ffffff; /* Hover color */
+    /* color: ; */
+    color: aqua;
+  }
+  

@@ -26,7 +26,7 @@
     margin-bottom: 30px;
   }
   
-  .text-overlay .btn {
+  .text-overlay .btnn {
     display: inline-block;
     background-color: #fff;
     color: #000;
@@ -37,7 +37,8 @@
     transition: background-color 0.3s ease;
   }
   
-  .text-overlay .btn:hover {
+  .text-overlay .btnn:hover {
     background-color: #e31b4d;
+    color: white;
   }
   

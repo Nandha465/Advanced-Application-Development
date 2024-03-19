@@ -1,0 +1,201 @@
+.dashboard-container {
+  display: flex;
+}
+
+.sidebar {
+  height: 100%;
+  width: 250px;
+  background-color: #333;
+  padding-top: 100px;
+}
+
+.sidebar h2 {
+  color: #fff;
+  text-align: center;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 45px;
+}
+
+.sidebar ul li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+
+.sidebar ul li a:hover {
+  background-color: #555;
+}
+
+.user-dashboard-content {
+  flex: 1;
+}
+
+/* UserDashboard.css */
+.dashboard-container {
+  width: 100%;
+  overflow-x: auto; /* Enable horizontal scrolling for small screens */
+  /* padding: 10%; */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #1c1b1b; /* Add border to the table */
+  /* padding: %; */
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #131313;
+}
+
+.user {
+  color: #e31b4d;
+  /* padding: 5%; */
+}
+
+/* Apply responsive styles */
+@media only screen and (max-width: 600px) {
+  /* On small screens, make the table scroll horizontally */
+  table {
+    overflow-x: auto;
+    display: block;
+  }
+  
+  /* Hide table header cells on small screens */
+  thead th {
+    display: none;
+  }
+  tbody tr {
+    display: block;
+    border: 1px solid #ddd; /* Add border to table rows */
+    margin-bottom: 10px;
+  }
+  tbody td {
+    display: block;
+    text-align: left;
+    border-bottom: none; /* Remove bottom border from table cells */
+  }
+  td {
+    padding: 10px;
+  }
+}
+
+.user-dashboard-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image-contain {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
+  padding: 10%;
+}
+
+.image-item {
+  flex: 0 0 calc(25% - 20px);
+  margin-bottom: 20px;
+}
+
+.image-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.image-item p {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 768px) {
+  .image-item {
+    flex: 0 0 calc(100% - 20px);
+  }
+}
+
+.user-dashboard-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.image-item {
+  flex: 0 0 calc(25% - 20px);
+  margin-bottom: 20px;
+}
+
+.image-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.image-item p {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Pagination styles */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #555;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 768px) {
+  .image-item {
+    flex: 0 0 calc(100% - 20px);
+  }
+  
+  .pagination {
+    flex-direction: column;
+  }
+  
+  .pagination button {
+    margin: 5px 0;
+  }
+}
+
+
+.eve {
+  text-align: center;
+  align-items:center
+}

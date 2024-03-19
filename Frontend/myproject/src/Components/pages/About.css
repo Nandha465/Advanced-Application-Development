@@ -1,0 +1,41 @@
+.about-us-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .event-card {
+    margin: 40px;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+  }
+  
+  .event-card img {
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  .event-card h2 {
+    margin-top: 10px;
+    font-size: 24px;
+  }
+  
+  .event-card p {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  
+  .abt-h1{
+    text-align: center;
+  }
+  .abt-h5{
+    text-align: center;
+    justify-content: center;
+    /* justify-content: baseline; */
+    color: rgb(89, 100, 109);
+    padding: 2%;
+  }

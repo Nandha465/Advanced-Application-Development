@@ -1,0 +1,41 @@
+.budget-section {
+    background: linear-gradient(90deg, rgba(244, 7, 111, 1) 40%, rgba(255, 231, 0, 1) 100%);
+    padding: 5% 8% 5% 8%;
+    display: flex;
+    justify-content: space-between; /* Align items with space between */
+    align-items: center; /* Align items vertically */
+  }
+  
+  .calculate-button {
+    padding: 15px 65px; /* Adjust padding as needed */
+    font-size: 20px; /* Adjust font size as needed */
+    background-color: #ffffff; /* Button background color */
+    color: #e31b4d; /* Button text color */
+    border: none; /* Remove button border */
+    border-radius: 30px; /* Rounded corners */
+    cursor: pointer; /* Add cursor pointer on hover */
+    /* right: 50px; */
+  }
+  .calculate-button:hover{
+    background-color: #ffffff;
+  } 
+  
+  @media (max-width: 768px) {
+    .budget-section {
+      flex-direction: column; /* Change to column layout on smaller screens */
+      align-items: flex-start; /* Align items to the start */
+    }
+  
+    .calculate-button {
+      margin-top: 20px; /* Add margin on top */
+    }
+  }
+  
+  .budget{
+    color: #ffffff;
+}
+
+.budget-main{
+      padding-top: 5%;
+
+  }

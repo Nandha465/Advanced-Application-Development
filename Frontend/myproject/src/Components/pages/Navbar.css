@@ -1,45 +1,55 @@
-nav {
-    background-color: #e4446c;
-    overflow: hidden;
-    text-decoration: none;
-    color: aqua;
-    /* position: fixed; */
-    /* background: transparent; */
-    
-  }
+/* Navbar.css */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e31b4d;
+  color: white;
+  padding: 10px 20px;
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  padding-left: 20%;
+  color: white;
+}
+
+.navbar-options {
+  display: flex;
+  align-items: center;
+  padding-right:  5%;
+  text-decoration: none;
   
-  .left {
-    float: left;
-    color: aqua;
-    text-align: center;
-    display: flex;
-    flex-wrap: wrap;
-  }
+}
+
+.navbar-option {
+  color: white;
+  padding: 20px;
+  cursor: pointer;
+  font-size: 18px;
+  /* padding-right: 15%; */
   
-  .right {
-    float: right;
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-    color: aqua;
-  }
-  
-  a {
-    display: inline-block;
-    text-align: center;
-    padding: 28px 35px;
-    text-decoration: none;
-    color: aqua;
-  }
-  
-  
-  @media screen and (max-width: 600px) {
-    .left, .right {
-      float: none;
-      text-align: center;
-    }
-    .right {
-      width: 100%;
-    }
-  }
-  
+
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #333;
+  color: white;
+  min-width: 120px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.profile-option {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.profile-option:hover {
+  background-color: #555;
+}
