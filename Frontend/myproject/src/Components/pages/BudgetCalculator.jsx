@@ -43,14 +43,10 @@ const BudgetCalculator = () => {
 
   const calculateTotal = () => {
     let total = 0;
+    total += numberOfPeople * 10; 
 
-    // Calculate based on the number of people
-    total += numberOfPeople * 10; // Placeholder cost per person
-
-    // Add food cost
     total += foodOptions[foodType] || 0;
 
-    // Add additional services cost
     Object.keys(additionalServices).forEach((service) => {
       if (additionalServices[service]) {
         total += serviceOptions[service];

@@ -124,7 +124,55 @@ const UserDashboard = ({ events: initialEvents }) => {
 </div>
 
       </div>
-
+      <div className="user-dashboard-content" style={{ display: activeTab === 'users' ? 'block' : 'none' }}>
+      <h2>My Details</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {currentEvents.map((event, index) => (
+            <tr key={index}>
+              <td>{event.name}</td>
+              <td>{event.email}</td>
+              <td>{event.password}</td>
+              
+              <td>
+                <button onClick={() => handleDelete(index)}>Delete</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {/* Pagination */}
+      <div className="pagination">
+        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+          &lt;
+        </button>
+        <ul>
+          {Array.from({ length: Math.ceil(events.length / eventsPerPage) }, (_, i) => {
+            if (i !== 0 && i !== Math.ceil(events.length / eventsPerPage) - 1) {
+              return (
+                <li key={i}>
+                  <a href="#" onClick={() => paginate(i + 1)} className={currentPage === i + 1 ? 'active' : ''}>
+                    {i + 1}
+                  </a>
+                </li>
+              );
+            }
+            return null; // Exclude the first and last buttons
+          })}
+        </ul>
+        <button onClick={handleNextPage} disabled={currentPage === Math.ceil(events.length / eventsPerPage)}>
+          &gt;
+        </button>
+      </div>
+    </div>
       {/* Images with descriptions */}
       {(activeTab !== 'bookings') && (activeTab !== 'users') && (
         
