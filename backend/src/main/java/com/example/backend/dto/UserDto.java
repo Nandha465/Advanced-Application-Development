@@ -1,4 +1,3 @@
-
 package com.backend.dto;
 
 import lombok.AllArgsConstructor;
@@ -8,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Userdto {
+public class UserDto {
 
     private String email;
     private String password;
