@@ -1,9 +1,12 @@
-package com.backend.repository;
+package com.example.backend.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.backend.Model.User;
+import com.example.backend.model.User;
 
-public interface UserRepo extends JpaRepository<User, Long> {
-    
+import java.util.Optional;
+
+public interface UserRepo extends JpaRepository<User, Integer> {
+    Optional<User> findByEmail(String username);
+
 }
