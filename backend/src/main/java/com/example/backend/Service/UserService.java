@@ -52,7 +52,7 @@ public class UserService {
     }
 
     // deleteUser
-    public void removeUser(@NonNull Integer userId) {
+    public void removeUser(@NonNull Long userId) {
         userRepository.deleteById(userId);
     }
 }

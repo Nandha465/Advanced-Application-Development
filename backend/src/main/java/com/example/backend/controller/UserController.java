@@ -52,7 +52,7 @@ public class UserController {
 
     @DeleteMapping("deleteUser/{userId}")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public ResponseEntity<Void> removeUser(@NonNull @PathVariable Integer userId) {
+    public ResponseEntity<Void> removeUser(@NonNull @PathVariable Long userId) {
         userService.removeUser(userId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
