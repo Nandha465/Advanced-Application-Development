@@ -1,7 +1,5 @@
 package com.example.backend.controller;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.backend.Service.UserService;
+import com.example.backend.dto.UpdateRequest;
 import com.example.backend.model.User;
 
 import java.util.List;

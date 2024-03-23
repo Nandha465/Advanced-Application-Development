@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './Userdash.css'; // Import the CSS file
-import image1 from './partyimg.jpg'; // Import your images
-import image2 from './marriageimg.jpg';
-import image3 from './kids_cele.jpg';
-import image4 from './gardenimg.jpg';
 import { useNavigate } from 'react-router-dom'; // Import useHistory from react-router-dom
+import Footer from './Footer';
+import Navbar from './Navbar';
+import UseLocalStorage from './LocalStorage';
 
-const UserDashboard = ({ events: initialEvents }) => {
+const UserDashboard = () => {
 
   const [activeTab, setActiveTab] = useState('dashboard');
-  const [events, setEvents] = useState(initialEvents);
+  const [events, setEvents] = UseLocalStorage('events', []);
+
   const [currentPage, setCurrentPage] = useState(1);
   const eventsPerPage = 4;
+
+  useEffect(() => {
+    const storedEvents = JSON.parse(localStorage.getItem('events')) || [];
+    setEvents(storedEvents);
+  }, []);
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
@@ -45,6 +50,8 @@ const UserDashboard = ({ events: initialEvents }) => {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="dashboard-container">
       {/* Sidebar */}
       <div className="sidebar">
@@ -59,8 +66,7 @@ const UserDashboard = ({ events: initialEvents }) => {
             <a href="#" onClick={() => handleTabClick('users')} className={activeTab === 'users' ? 'active' : ''}>
               My Details
             </a>
-  </li>
-          
+          </li>
           <li>
             <a href="#" onClick={() => handleTabClick('logout')} className={activeTab === 'logout' ? 'active' : ''}>
               Logout
@@ -80,6 +86,7 @@ const UserDashboard = ({ events: initialEvents }) => {
               <th>Type</th>
               <th>Number of People</th>
               <th>Food Type</th>
+              <th>Status</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -91,8 +98,9 @@ const UserDashboard = ({ events: initialEvents }) => {
                 <td>{event.type}</td>
                 <td>{event.numberOfPeople}</td>
                 <td>{event.foodType}</td>
+                <td>{event.status}</td>
                 <td>
-                  <button onClick={() => handleDelete(index)}>Edit</button>
+                  {/*<button onClick={() => handleDelete(index)}>Edit</button>*/}
                   <button onClick={() => handleDelete(index)}>Delete</button>
                 </td>
               </tr>
@@ -101,105 +109,31 @@ const UserDashboard = ({ events: initialEvents }) => {
         </table>
         {/* Pagination */}
         <div className="pagination">
-  <button onClick={handlePreviousPage} disabled={currentPage === 1}>
-    &lt;
-  </button>
-  <ul>
-    {Array.from({ length: Math.ceil(events.length / eventsPerPage) }, (_, i) => {
-      if (i !== 0 && i !== Math.ceil(events.length / eventsPerPage) - 1) {
-        return (
-          <li key={i}>
-            <a href="#" onClick={() => paginate(i + 1)} className={currentPage === i + 1 ? 'active' : ''}>
-              {i + 1}
-            </a>
-          </li>
-        );
-      }
-      return null; // Exclude the first and last buttons
-    })}
-  </ul>
-  <button onClick={handleNextPage} disabled={currentPage === Math.ceil(events.length / eventsPerPage)}>
-    &gt;
-  </button>
-</div>
-
-      </div>
-      <div className="user-dashboard-content" style={{ display: activeTab === 'users' ? 'block' : 'none' }}>
-      <h2>My Details</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>User Name</th>
-            <th>Email</th>
-            <th>Password</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentEvents.map((event, index) => (
-            <tr key={index}>
-              <td>{event.name}</td>
-              <td>{event.email}</td>
-              <td>{event.password}</td>
-              
-              <td>
-                <button onClick={() => handleDelete(index)}>Delete</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      {/* Pagination */}
-      <div className="pagination">
-        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
-          &lt;
-        </button>
-        <ul>
-          {Array.from({ length: Math.ceil(events.length / eventsPerPage) }, (_, i) => {
-            if (i !== 0 && i !== Math.ceil(events.length / eventsPerPage) - 1) {
-              return (
-                <li key={i}>
-                  <a href="#" onClick={() => paginate(i + 1)} className={currentPage === i + 1 ? 'active' : ''}>
-                    {i + 1}
-                  </a>
-                </li>
-              );
-            }
-            return null; // Exclude the first and last buttons
-          })}
-        </ul>
-        <button onClick={handleNextPage} disabled={currentPage === Math.ceil(events.length / eventsPerPage)}>
-          &gt;
-        </button>
-      </div>
-    </div>
-      {/* Images with descriptions */}
-      {(activeTab !== 'bookings') && (activeTab !== 'users') && (
-        
-        <div className="image-container">
-        <div className="image-item">
-          <div className="image-item">
-            <img src={image1} alt="Description 1" />
-            <p>Description 1</p>
-          </div>
-          </div>
-        
-          <div className="image-item">
-            <img src={image3} alt="Description 3" />
-            <p>Description 3</p>
-          </div>
-          <div className="image-item">
-            <img src={image3} alt="Description 3" />
-            <p>Description 3</p>
-          </div>
-          <div className="image-item">
-            <img src={image4} alt="Description 4" />
-            <p>Description 4</p>
-          </div>
+          <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+            &lt;
+          </button>
+          <ul>
+            {Array.from({ length: Math.ceil(events.length / eventsPerPage) }, (_, i) => {
+              if (i !== 0 && i !== Math.ceil(events.length / eventsPerPage) - 1) {
+                return (
+                  <li key={i}>
+                    <a href="#" onClick={() => paginate(i + 1)} className={currentPage === i + 1 ? 'active' : ''}>
+                      {i + 1}
+                    </a>
+                  </li>
+                );
+              }
+              return null; // Exclude the first and last buttons
+            })}
+          </ul>
+          <button onClick={handleNextPage} disabled={currentPage === Math.ceil(events.length / eventsPerPage)}>
+            &gt;
+          </button>
         </div>
-        
-      )}
+      </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 

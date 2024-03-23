@@ -57,7 +57,7 @@ console.log(validationErrors);
     }
   };
   const handleNavigate= () => {
-    nav("/login");
+    nav("/");
   };
 
   return (

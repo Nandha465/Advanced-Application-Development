@@ -1,21 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect} from 'react';
 import './Userdash.css'; // Import the CSS file
 import image1 from './partyimg.jpg'; // Import your images
 import image2 from './marriageimg.jpg';
 import image3 from './kids_cele.jpg';
 import image4 from './gardenimg.jpg';// Import useHistory from react-router-dom
 import { Link } from 'react-router-dom';
+import UseLocalStorage from './LocalStorage';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
-const AdminPage = ({ events: initialEvents }) => {
+const AdminPage = () => {
   // Initialize useHistory
 
   const [activeTab, setActiveTab] = useState('dashboard');
-  const [events, setEvents] = useState(initialEvents);
+  const [events, setEvents] = UseLocalStorage('events', []);
   const [currentPage, setCurrentPage] = useState(1);
   const eventsPerPage = 4;
 
+  useEffect(() => {
+    const storedEvents = JSON.parse(localStorage.getItem('events')) || [];
+    setEvents(storedEvents);
+  }, []);
+
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
+  };
+
+  const handleApprove = (index) => {
+    const updatedEvents = [...events];
+    updatedEvents[index].status = 'Approved';
+    setEvents(updatedEvents);
   };
 
   const handleDelete = (index) => {
@@ -46,6 +60,8 @@ const AdminPage = ({ events: initialEvents }) => {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="dashboard-container">
       {/* Sidebar */}
       <div className="sidebar">
@@ -86,6 +102,7 @@ const AdminPage = ({ events: initialEvents }) => {
               <th>Type</th>
               <th>Number of People</th>
               <th>Food Type</th>
+              <th>Status</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -97,8 +114,12 @@ const AdminPage = ({ events: initialEvents }) => {
                 <td>{event.type}</td>
                 <td>{event.numberOfPeople}</td>
                 <td>{event.foodType}</td>
+                <td>{event.status}</td>
                 <td>
-                  <button onClick={() => handleDelete(index)}>Delete</button>
+                {event.status !== 'Approved' && (
+                  <button onClick={() => handleApprove(index)}>Approve</button>
+                )}
+                <button onClick={() => handleDelete(index)}>Delete</button>
                 </td>
               </tr>
             ))}
@@ -224,6 +245,8 @@ const AdminPage = ({ events: initialEvents }) => {
           </>
       )}
     </div>
+    <Footer/>
+    </>
   );
 };
 

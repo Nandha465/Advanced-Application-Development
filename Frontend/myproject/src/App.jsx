@@ -1,63 +1,40 @@
-import './App.css'
-import Home from './Components/pages/Home'
-import {Routes,Route, BrowserRouter as Router} from "react-router-dom";
-import { Suspense, useState } from 'react';
-// import AdminPage from './Components/pages/AdminPage';
-import Footer from './Components/pages/Footer';
-import BudgetCalculator from './Components/pages/BudgetCalculator';
-import Navbar from './Components/pages/Navbar';
-import AboutPage from './Components/pages/About';
+import React, { useState } from 'react';
+import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Suspense } from 'react';
+import LoadingIndicator from './Components/pages/LoadingIndicator';
 import Login from './Components/pages/Login';
+import Home from './Components/pages/Home';
+import BudgetCalculator from './Components/pages/BudgetCalculator';
+import AboutPage from './Components/pages/About';
 import SignUp from './Components/pages/Signup';
 import EventForm from './Components/pages/EventForm';
-import Userdash from './Components/pages/Userdash';
-import LoadingIndicator from './Components/pages/LoadingIndicator';
-import React from 'react';
+import UserDashboard from './Components/pages/Userdash';
+import AdminPage from './Components/pages/AdminPage';
 
-const Admin = React.lazy(() => import('./Components/pages/AdminPage'));
-
-function App() {
-
+const App = () => {
   const [events, setEvents] = useState([]);
-  const [event1, setEvent1] = useState([]);
-  // const [events, setEvents] = useState([]);
 
   const addEvent = (newEvent) => {
     setEvents([...events, newEvent]);
-  };
-  const addData = (newevents) => {
-    setEvent1([...event1, newevents]);
+    localStorage.setItem('events', JSON.stringify([...events, newEvent]));
   };
 
   return (
-    <>
-      
-      <div>
-      <Router>
-      <Suspense fallback={<LoadingIndicator/>}>
-      <Navbar/>
-      <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/budget' element={<BudgetCalculator/>}/>
-          <Route path='/about' element={<AboutPage/>}/>
-          <Route path='/login' element={<Login/>}/>
-          <Route path='/signup' element={<SignUp addData={addData}/>}/>
-          <Route path='/eventform' element={<EventForm addEvent={addEvent}/>} />
-          <Route path='/userdash' element={<Userdash events={events}/>} />
-          <Route path='/admin' element={<Admin events={events}/>} />
+    <Router>
+      <Suspense fallback={<LoadingIndicator />}>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/budget" element={<BudgetCalculator />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/eventform" element={<EventForm addEvent={addEvent} />} />
+          <Route path="/userdash" element={<UserDashboard events={events} />} />
+          <Route path="/admin" element={<AdminPage events={events} />} />
         </Routes>
-        <Footer/>
-        </Suspense>
-      </Router>
-      </div>
-      
-      </>
-      )
-    }
-    
-    export default App
-    // <Register/>
-    // <Login/>
-    // <AdminPage/>
-    
- 
+      </Suspense>
+    </Router>
+  );
+};
+
+export default App;

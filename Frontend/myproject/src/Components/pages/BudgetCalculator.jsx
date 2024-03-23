@@ -3,6 +3,8 @@ import './BudgetCalculator.css';
 import image1 from './party1.jpg';
 import image2 from './party2.jpg';
 import image3 from './party3.jpg';
+import Footer from './Footer';
+import Navbar from './Navbar';
 
 const BudgetCalculator = () => {
   const [eventType, setEventType] = useState('');
@@ -57,6 +59,8 @@ const BudgetCalculator = () => {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="container">
       <div className="calculator">
         <h2>Event Budget Calculator</h2>
@@ -139,6 +143,8 @@ const BudgetCalculator = () => {
         </div>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 

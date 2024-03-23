@@ -1,36 +1,18 @@
+// EventForm.js
 import React, { useState } from 'react';
- // Import useHistory
-import './EventForm.css'; 
+import './EventForm.css';
 import { useNavigate } from 'react-router-dom';
+import UseLocalStorage from './LocalStorage';
+import Footer from './Footer';
+import Navbar from './Navbar';
 
 const EventForm = ({ addEvent }) => {
-  const [eventName, setEventName] = useState('');
-  const [eventDate, setEventDate] = useState('');
-  const [eventType, setEventType] = useState('');
-  const [numberOfPeople, setNumberOfPeople] = useState('');
-  const [foodType, setFoodType] = useState('');
+  const [eventName, setEventName] = UseLocalStorage('eventName', '');
+  const [eventDate, setEventDate] = UseLocalStorage('eventDate', '');
+  const [eventType, setEventType] = UseLocalStorage('eventType', '');
+  const [numberOfPeople, setNumberOfPeople] = UseLocalStorage('numberOfPeople', '');
+  const [foodType, setFoodType] = UseLocalStorage('foodType', '');
   const navigateTo = useNavigate();
-
-
-  const handleEventNameChange = (e) => {
-    setEventName(e.target.value);
-  };
-
-  const handleEventDateChange = (e) => {
-    setEventDate(e.target.value);
-  };
-
-  const handleEventTypeChange = (e) => {
-    setEventType(e.target.value);
-  };
-
-  const handleNumberOfPeopleChange = (e) => {
-    setNumberOfPeople(e.target.value);
-  };
-
-  const handleFoodTypeChange = (e) => {
-    setFoodType(e.target.value);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +21,8 @@ const EventForm = ({ addEvent }) => {
       date: eventDate,
       type: eventType,
       numberOfPeople: numberOfPeople,
-      foodType: foodType
+      foodType: foodType,
+      status: 'Pending'
     };
     addEvent(newEvent);
     setEventName('');
@@ -47,10 +30,12 @@ const EventForm = ({ addEvent }) => {
     setEventType('');
     setNumberOfPeople('');
     setFoodType('');
-    navigateTo('/')
+    navigateTo('/home');
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="form-container">
       <h2>Event Booking Form</h2>
       <form onSubmit={handleSubmit}>
@@ -58,14 +43,14 @@ const EventForm = ({ addEvent }) => {
           type="text"
           placeholder="Name"
           value={eventName}
-          onChange={handleEventNameChange}
+          onChange={(e) => setEventName(e.target.value)}
         />
         <input
           type="date"
           value={eventDate}
-          onChange={handleEventDateChange}
+          onChange={(e) => setEventDate(e.target.value)}
         />
-        <select value={eventType} onChange={handleEventTypeChange}>
+        <select value={eventType} onChange={(e) => setEventType(e.target.value)}>
           <option value="">Select Event Type</option>
           <option value="Garden Party">Garden Party</option>
           <option value="Marriage Event">Marriage Event</option>
@@ -77,9 +62,9 @@ const EventForm = ({ addEvent }) => {
           type="number"
           placeholder="Number of People"
           value={numberOfPeople}
-          onChange={handleNumberOfPeopleChange}
+          onChange={(e) => setNumberOfPeople(e.target.value)}
         />
-        <select value={foodType} onChange={handleFoodTypeChange}>
+        <select value={foodType} onChange={(e) => setFoodType(e.target.value)}>
           <option value="">Select Food Type</option>
           <option value="veg">Veg</option>
           <option value="non-veg">Non-Veg</option>
@@ -87,6 +72,8 @@ const EventForm = ({ addEvent }) => {
         <button type="submit">Book Event</button>
       </form>
     </div>
+    <Footer/>
+    </>
   );
 };
 

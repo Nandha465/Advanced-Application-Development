@@ -1,7 +1,6 @@
 package com.example.backend.Service;
 
 
-
 import java.util.List;
 import java.util.Optional;
 
@@ -10,9 +9,9 @@ import org.springframework.lang.NonNull;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.example.backend.dto.UpdateRequest;
 import com.example.backend.model.User;
 import com.example.backend.repository.UserRepo;
-
 
 
 @Service

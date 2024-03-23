@@ -42,8 +42,8 @@ const Services = () => {
         <div className="image-container1">
         <img src={image4} alt="Party 1" />
         <div className='party'>
-        <h6>Garden Party</h6>
-        <h6>$150</h6>
+        <h6 className='h-6'>Garden Party</h6>
+        <h6 className='h-6'>$150</h6>
         </div>
         <div className='btn1'>
         <h6>4 - 6 Hrs</h6>
@@ -55,8 +55,8 @@ const Services = () => {
         <div className="image-container1">
         <img src={image1} alt="Party 1" />
         <div className='party'>
-        <h6>Marriage Event</h6>
-        <h6>$300</h6>
+        <h6 className='h-6'>Marriage Event</h6>
+        <h6 className='h-6'>$300</h6>
         </div>
         <div className='btn1'>
         <h6>1 - 3 Days</h6>
@@ -68,8 +68,8 @@ const Services = () => {
         <div className="image-container1">
         <img src={image3} alt="Party 1" />
         <div className='party'>
-        <h6>Private Party</h6>
-        <h6>$200</h6>
+        <h6 className='h-6'>Private Party</h6>
+        <h6 className='h-6'>$200</h6>
         </div>
         <div className='btn1'>
         <h6>3 - 5 Hrs</h6>
@@ -81,8 +81,8 @@ const Services = () => {
         <div className="image-container1">
         <img src={image2} alt="Party 1" />
         <div className='party'>
-        <h6>Birthday Party</h6>
-        <h6>$175</h6>
+        <h6 className='h-6'>Birthday Party</h6>
+        <h6 className='h-6'>$175</h6>
         </div>
         <div className='btn1'>
         <h6>4 - 8 Hrs</h6>
@@ -94,8 +94,8 @@ const Services = () => {
         <div className="image-container1">
         <img src={image5} alt="Party 1" />
         <div className='party'>
-        <h6>Corporate Event</h6>
-        <h6>$125</h6>
+        <h6 className='h-6'>Corporate Event</h6>
+        <h6 className='h-6'>$125</h6>
         </div>
         <div className='btn1'>
         <h6>1 - 2 Hrs</h6>

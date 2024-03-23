@@ -28,7 +28,7 @@ const navigate = useNavigate();
       navigate("/admin")
     }
     else{
-      navigate("/");
+      navigate("/home");
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
