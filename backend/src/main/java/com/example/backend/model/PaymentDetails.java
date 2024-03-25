@@ -16,9 +16,9 @@ public class PaymentDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long userId;
-    private double totalAmount;
+    private String phonenumber;
     private String paymentDate;
     private String paymentType;
+    private String budget;
 
 }

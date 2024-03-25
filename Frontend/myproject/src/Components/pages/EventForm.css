@@ -1,74 +1,155 @@
-/* EventBookingForm.css */
-.form-container {
-  width: 80%; /* Adjust the width as needed */
-  margin: 0 auto;
+.book-container {
+  display: flex;
+  flex-direction: column; /* Change to column for better responsiveness */
+  align-items: center;
+  justify-content: center;
+  height: auto; /* Change to auto for dynamic height */
+  background: url('https://media.licdn.com/dms/image/C5612AQFQnOAqbc6fug/article-cover_image-shrink_720_1280/0/1649082499105?e=2147483647&v=beta&t=qw32-JAPQ2GxhnZMYvTOScfJZSKg8OnzoXEKrkwteis') no-repeat center center/cover;
+  backface-visibility: hidden;
+  padding-bottom: 20px; /* Add padding for better spacing */
+}
+
+
+.book-heading {
+  text-align: center;
+  padding-top: 2%;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* .book-form {
+  width: 450px;
+  height:660px;
+  background-color: #f8f6f6;
   padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(172, 59, 59, 0.2);
+  
+} */
+
+.book-form {
+  width: 80%; /* Adjust width for better responsiveness */
+  max-width: 450px; /* Add max-width to prevent form from becoming too wide on larger screens */
+  background-color: #f8f6f6;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(172, 59, 59, 0.2);
 }
-  
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
- input[type="text"],
-input[type="date"],
-select,
-input[type="number"] {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+
+.form-book {
+  margin-bottom: 3px;
+  padding-top: 3%;
 }
+.book-qoute{
+  text-align: center;
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.input,select {
+  width: 100%;
+  padding: 15px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* .book-button1 {
+  width: 50%;
+  padding: 18px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #e12454;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  border-radius: 30px;
   
-  button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+} */
+.book-button1 {
+  width: 80%;
+  padding: 20px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #e12454;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  border-radius: 30px;
+  padding-right: 10%;
+}
+.book-button2 {
+  width: 10rem;
+  padding: 20px;
+  padding-left: 20%;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #e12454;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  border-radius: 30px;
+  align-items: center;
+}
+
+#book-btn{
+  padding-top: 5%;
+  /* padding-left: 14%; */
+  /* width: 100%;
+  height: 10%; */
+  display: flex;
+  flex-direction: row;
   
-  button:hover {
-    background-color: #0056b3;
-  }
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+}
+#book-btn1{
+  padding-top: 5%;
+  padding-left: 10%;
+  width: 150%;
+  /*height: 10%; */
+  display: flex;
+  flex-direction: row;
   
-  .form-modal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
+  /* align-items: center;
+  justify-content: center;
+  justify-content: space-between; */
+}
+/* .book-button:hover {
+  transform:scale(1.1);
+  z-index: 1;
+  background-color: aqua;
+} */
+#buttons{
+display: flex;
+flex-direction: row;
+}
+
+#booktable video{
+  position: absolute;
+  z-index: -1;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
   
-  .form-container {
-    width: 80%;
-    max-width: 400px; /* Adjust max-width as needed */
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.booktable
+{
+  background-color: rgb(13, 15, 15);
+}
+.book-heading,.book-qoute
+{
+  font-size: medium;
+}
+
+@media screen and (min-width: 768px) {
+  .book-container {
+    height: 100vh; /* Set back to full viewport height on larger screens */
   }
-  
-  /* Media query for responsiveness */
-  @media screen and (max-width: 600px) {
-    .form-container {
-      width: 90%;
-    }
-  }
+}
