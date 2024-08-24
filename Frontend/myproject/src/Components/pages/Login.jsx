@@ -1,86 +1,120 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import './Login.css';
 import { Link, useNavigate } from 'react-router-dom';
-// import {dogimg} from '../assets/dog.jpg';
+import { setRole, setToken, setusername } from './LocalStorage';
+import axios from 'axios';
+
 function Login() {
-  const [formData, setFormData] = useState({
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+  const [formErrors, setFormErrors] = useState({
     username: '',
     password: '',
   });
-const navigate = useNavigate();
-  const [errors, setErrors] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formData.username.trim()) {
-      newErrors.username = 'Username is required';
+  const validate = (e) => {
+    e.preventDefault();
+    const errors = {};
+
+    if (username.length === 0) {
+      errors.username = 'Username is required';
     }
-    if (!formData.password) {
-      newErrors.password = 'Password is required';
-    } else if (formData.password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters long';
+
+    if (password.length === 0) {
+      errors.password = 'Password is required';
     }
-    if(formData.username==="nandha"&& formData.password==="nandha123"){
-      navigate("/admin")
+
+    if (username === "nandha" && password === "nandha123") {
+      // Redirect to admin page if username and password are correct
+      navigate("/admin");
+      return;
     }
     else{
       navigate("/home");
     }
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-};
-const handleSubmit = (e) => {
-    e.preventDefault();
-    const isValid = validateForm();
-    if (isValid) {
-      // You can submit the form data to your server or perform other actions here.
-      setIsSubmitted(true);
-    }
-  };
-const handleNavigate= () => {
-    navigate("/signup");
+
+    // if (Object.keys(errors).length > 0) {
+    //   setFormErrors(errors);
+    //   return;
+    // }
+
+    // setFormErrors({
+    //   username: '',
+    //   password: '',
+    // });
+
+    // const userCredentials = {
+    //   username: username,
+    //   password: password
+    // };
+
+    // axios.post("http://localhost:8080/auth/login", userCredentials)
+    //   .then(response => {
+    //     const token = response.data.token;
+    //     if (token) {
+    //       setToken(token)
+    //       setusername(userCredentials.username);
+    //       const userType = response.data.role;
+    //       setRole(userType)
+    //       if (userType === "USER") {
+    //         navigate("/home");zz
+    //       } else {
+    //         alert("Invalid user role");
+    //       }
+    //     } else {
+    //       alert("Invalid token. Please try again.");
+    //     }
+    //   }).catch(error => {
+    //     alert(error.response.data)
+    //   });
   };
 
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+    setFormErrors({ ...formErrors, username: '' });
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    setFormErrors({ ...formErrors, password: '' });
+  };
+
+  const handleNavigate = () => {
+    navigate("/signup");
+  };
 
   return (
     <div className={`loginContainer`}>
       <div className="forms-container">
         <div className="signin-signup" >
-          <form action="#" className="sign-in-form loginForm" onSubmit={handleSubmit}>
+          <form action="#" className="sign-in-form loginForm">
             <h2 className="title">Sign in</h2>
-
             <div className='input-field'>
-            <FontAwesomeIcon icon={faUser} className='my-auto mx-auto'/>
-            <input className='LoginInput' type='text' placeholder='Username' value={formData.username}
-            onChange={(e) => setFormData({ ...formData, username: e.target.value })}/>
+              <FontAwesomeIcon icon={faUser} className='my-auto mx-auto' />
+              <input className='LoginInput' type='text' placeholder='Username' value={username} onChange={handleUsernameChange} />
             </div>
-            {errors.username && <p className="error">{errors.username}</p>}
-            
+            {formErrors.username && <p className="error">{formErrors.username}</p>}
             <div className='input-field'>
-            <FontAwesomeIcon icon={faLock} className='my-auto mx-auto'/>
-            <input className='LoginInput' type='password'   placeholder='Password' value={formData.password}
-            onChange={(e) => setFormData({ ...formData, password: e.target.value })}/>
+              <FontAwesomeIcon icon={faLock} className='my-auto mx-auto' />
+              <input className='LoginInput' type='password' placeholder='Password' value={password} onChange={handlePasswordChange} />
             </div>
-            {errors.password && <p className="error">{errors.password}</p>}
-            
-            <button className='btn' >Sign In</button>
-           
+            {formErrors.password && <p className="error">{formErrors.password}</p>}
+            <button className='btn' onClick={validate} type="submit">Sign In</button>
             <p className="social-text loginp"> Sign in with social platforms</p>
             <div className="social-media">
-              
               <a href="#" className="social-icon">
-                <FontAwesomeIcon icon={faGoogle} className='my-auto mx-auto'/>
+                <FontAwesomeIcon icon={faGoogle} className='my-auto mx-auto' />
               </a>
               <a href="#" className="social-icon">
-                <FontAwesomeIcon icon={faLinkedinIn} className='my-auto mx-auto'/>
+                <FontAwesomeIcon icon={faLinkedinIn} className='my-auto mx-auto' />
               </a>
             </div>
           </form>
-          
         </div>
       </div>
       <div className="panels-container">
@@ -91,16 +125,14 @@ const handleNavigate= () => {
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
               ex ratione. Aliquid!
             </p>
-             <button className="btn transparent" onClick={handleNavigate}>
+            <button className="btn transparent" onClick={handleNavigate}>
               Sign up
-              </button>
+            </button>
           </div>
-          
         </div>
-        
       </div>
     </div>
-  )}
+  )
+}
 
-  export default Login
- 
+export default Login;

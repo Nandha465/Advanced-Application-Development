@@ -16,6 +16,7 @@ import PaymentVid from './Components/pages/PaymentVid';
 const App = () => {
   const [events, setEvents] = useState([]);
   const [payments, setPayments] = useState([]);
+  const [users, setUsers] = useState([]);
 
   const addEvent = (newEvent) => {
     setEvents([...events, newEvent]);
@@ -24,6 +25,10 @@ const App = () => {
   const addPayment = (newPayment) => {
     setPayments([...payments, newPayment]);
     localStorage.setItem('payments', JSON.stringify([...payments, newPayment]));
+  };
+  const User = (userDetails) => {
+    setUsers([...users, userDetails]);
+    localStorage.setItem('userDetails', JSON.stringify([...users, userDetails]));
   };
 
   return (
@@ -34,7 +39,7 @@ const App = () => {
           <Route path="/home" element={<Home />} />
           <Route path="/budget" element={<BudgetCalculator />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signup" element={<SignUp addUser={User}/>} />
           <Route path="/paysuccess" element={<PaymentVid/>} />
           <Route path="/eventform" element={<EventForm addEvent={addEvent} />} />
           <Route path="/userdash" element={<UserDashboard events={events} />} />

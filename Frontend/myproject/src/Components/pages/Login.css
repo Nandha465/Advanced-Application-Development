@@ -108,6 +108,7 @@ body,
 .social-text {
   padding: 0.7rem 0;
   font-size: 1rem;
+  color: #333;
 }
 
 .social-media {
@@ -133,6 +134,9 @@ body,
 .social-icon:hover {
   color: #4481eb;
   border-color: #4481eb;
+}
+.error{
+  color: #333;
 }
 
 .btn {

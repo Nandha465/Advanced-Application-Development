@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { Link, useNavigate } from 'react-router-dom';
+// import UseLocalStorage from './LocalStorage';
 
-
-function SignUp({ addData }) {
+function SignUp() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -18,18 +18,10 @@ function SignUp({ addData }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newevents = {
-      name: name,
-      email: email,
-      password: password,
-      
-    };
-    addData(newevents);
-    
-    setName('');
-    setEmail('');
-    setPassword('');
-    nav('/');
+    const userDetails={email,password,name,
+      role:"USER",
+      }
+  
     const validationErrors = {};
 
     if (!name.trim()) {
@@ -55,6 +47,8 @@ console.log(validationErrors);
       
       nav("/");
     }
+   
+
   };
   const handleNavigate= () => {
     nav("/");
@@ -72,7 +66,7 @@ console.log(validationErrors);
       <input className='LoginInput' type='text' placeholder='Username' value={name}
       onChange={(e) => setName(e.target.value)}/>
       </div>
-      {errors.username && <p className="error">{errors.username}</p>}
+      {errors.name && <p className="error">{errors.name}</p>}
       <div className='input-field'>
       <FontAwesomeIcon icon={faUser} className='my-auto mx-auto'/>
       <input className='LoginInput' type='email' placeholder='Email' value={email}

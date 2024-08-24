@@ -134,7 +134,7 @@ th, td {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 .image-item {
@@ -198,4 +198,40 @@ th, td {
 .eve {
   text-align: center;
   align-items:center
+}
+
+
+/* Add these styles to the existing CSS */
+
+/* Center the payment details table */
+.payment-details-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Style the payment details table */
+.payment-details-table {
+  width: 100%;
+  margin-top: 40px;
+  border-collapse: collapse;
+}
+
+.payment-details-table th,
+.payment-details-table td {
+  padding: 20px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.payment-details-table th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.payment-details-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.payment-details-table tr:hover {
+  background-color: #ddd;
 }
